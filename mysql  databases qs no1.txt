@@ -1,0 +1,155 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| csa0547_name       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| practice           |
+| student1           |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use csa0547_name;
+Database changed
+mysql> CREATE TABLE student (
+    ->   Reg_No INT(3),
+    ->   Name VARCHAR(15),
+    ->   Gender CHAR(1),
+    ->   DOB DATE,
+    ->   MobileNo INT(10)
+    -> );
+ERROR 1050 (42S01): Table 'student' already exists
+mysql> DROP TABLE IF EXISTS student;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE TABLE student (
+    ->   Reg_No INT(3),
+    ->   Name VARCHAR(15),
+    ->   Gender CHAR(1),
+    ->   DOB DATE,
+    ->   MobileNo INT(10)
+    -> );
+Query OK, 0 rows affected, 2 warnings (0.04 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_csa0547_name |
++------------------------+
+| student                |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE faculty (
+    -> Fac_No VARCHAR(4),
+    -> FacName VARCHAR(15),
+    -> Gender CHAR(1),
+    -> DOB DATE,
+    -> DOJ DATE,
+    -> MobileNo int(10),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 8
+mysql> CREATE TABLE faculty (
+    -> Fac_No VARCHAR(4),
+    -> FacName VARCHAR(15),
+    -> Gender CHAR(1),
+    -> DOB DATE,
+    -> MobileNo int(10)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.09 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_csa0547_name |
++------------------------+
+| faculty                |
+| student                |
++------------------------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE department (
+    -> DeptNo VARCHAR(4),
+    -> DeptName VARCHAR(15),
+    -> DeptHead VARCHAR(4)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_csa0547_name |
++------------------------+
+| department             |
+| faculty                |
+| student                |
++------------------------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE course (
+    -> CourseNo VARCHAR(3),
+    -> CourseDesc VARCHAR(14),
+    -> CourseType CHAR(1),
+    -> SemNo CHAR(1),
+    -> HallNo VARCHAR(4),
+    -> FacNo VARCHAR(4)
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
++------------------------+
+| Tables_in_csa0547_name |
++------------------------+
+| course                 |
+| department             |
+| faculty                |
+| student                |
++------------------------+
+4 rows in set (0.00 sec)
+
+mysql> desc student;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Reg_No   | int         | YES  |     | NULL    |       |
+| Name     | varchar(15) | YES  |     | NULL    |       |
+| Gender   | char(1)     | YES  |     | NULL    |       |
+| DOB      | date        | YES  |     | NULL    |       |
+| MobileNo | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> desc faculty;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Fac_No   | varchar(4)  | YES  |     | NULL    |       |
+| FacName  | varchar(15) | YES  |     | NULL    |       |
+| Gender   | char(1)     | YES  |     | NULL    |       |
+| DOB      | date        | YES  |     | NULL    |       |
+| MobileNo | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc department;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| DeptNo   | varchar(4)  | YES  |     | NULL    |       |
+| DeptName | varchar(15) | YES  |     | NULL    |       |
+| DeptHead | varchar(4)  | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc course;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| CourseNo   | varchar(3)  | YES  |     | NULL    |       |
+| CourseDesc | varchar(14) | YES  |     | NULL    |       |
+| CourseType | char(1)     | YES  |     | NULL    |       |
+| SemNo      | char(1)     | YES  |     | NULL    |       |
+| HallNo     | varchar(4)  | YES  |     | NULL    |       |
+| FacNo      | varchar(4)  | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
